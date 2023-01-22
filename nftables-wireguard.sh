@@ -25,32 +25,32 @@ table inet firewall {
 
     # Define interval sets
 
-    set allowed_source_addrs = {
-        type ipv4_addr
-        flags interval
-        elements = {
+#    set input_allowed_source_addrs = {
+#        type ipv4_addr
+#        flags interval
+#        elements = {
 #            192.168.200.0/24,
 #            192.168.300.123/32
-        }
-    }
-
-    set allowed_source_6addrs = {
-        type ipv6_addr
-        flags interval
-        elements = {
+#        }
+#    }
+#
+#    set input_allowed_source_6addrs = {
+#        type ipv6_addr
+#        flags interval
+#        elements = {
 #            fdab:cdef:abcd::/64,
 #            fdab:cdef:abcd:1::/64
-        }
-    }
-
-    set allowed_destination_ports = {
-        type inet_service
-        flags interval
-        elements = {
+#        }
+#    }
+#
+#    set input_allowed_destination_ports = {
+#        type inet_service
+#        flags interval
+#        elements = {
 #            1234,
 #            2345
-        }
-    }
+#        }
+#    }
 
     # Wireguard
 #Example with fda:b:c::/64 to fda:b:c:4::/64 IPv6 networks.
@@ -117,10 +117,10 @@ table inet firewall {
 #        ip saddr {10.0.0.0/8,172.16.0.0/12,192.168.0.0/16} udp dport 53 accept
 #        ip6 saddr fc00::/7 udp dport 53 accept
 
-        ip6 saddr @allowed_source_addrs tcp dport @allowed_destination_ports accept
-        ip6 saddr @allowed_source_addrs udp dport @allowed_destination_ports accept
-        ip6 saddr @allowed_source_6addrs tcp dport @allowed_destination_ports accept
-        ip6 saddr @allowed_source_6addrs udp dport @allowed_destination_ports accept
+#        ip6 saddr @input_allowed_source_addrs tcp dport @input_allowed_destination_ports accept
+#        ip6 saddr @input_allowed_source_addrs udp dport @input_allowed_destination_ports accept
+#        ip6 saddr @input_allowed_source_6addrs tcp dport @input_allowed_destination_ports accept
+#        ip6 saddr @input_allowed_source_6addrs udp dport @input_allowed_destination_ports accept
 
         # Accept Wireguard connections.
 #        udp dport 51820 accept
