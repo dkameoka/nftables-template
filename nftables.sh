@@ -33,7 +33,7 @@ table inet firewall {
 #            192.168.300.123/32
 #        }
 #    }
-
+#
 #    set input_allowed_source_6addrs {
 #        type ipv6_addr
 #        flags interval
@@ -42,7 +42,7 @@ table inet firewall {
 #            fdab:cdef:abcd:1::/64
 #        }
 #    }
-
+#
 #    set input_allowed_destination_ports {
 #        type inet_service
 #        flags interval
@@ -94,7 +94,8 @@ table inet firewall {
         ct state invalid drop
 
         # Log dropped packets
-#        log prefix "[nftables] Dropped by firewall: " counter drop
+#        log prefix "[nftables] Dropped by firewall: "
+#        counter
     }
 
     chain fw_preroute {
@@ -129,6 +130,13 @@ table inet firewall {
 #        ip daddr @output_allow_dest_addrs accept
 #        ip6 daddr @output_allow_dest_6addrs accept
 #        log prefix "[nftables] Dropped by firewall whitelist: " counter drop
+#    }
+
+    # Egress blocklisting
+    # nft add rule inet firewall fw_output ip daddr 192.168.2.0/32 drop
+#    chain fw_output {
+#        type filter hook output priority filter
+#        policy accept
 #    }
 }
 EONFT
