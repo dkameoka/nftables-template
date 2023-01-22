@@ -108,10 +108,28 @@ table inet firewall {
         policy drop
     }
 
-    chain fw_output {
-        type filter hook output priority filter
-        policy accept
-    }
+    # Egress safelisting
+#    set output_allow_dest_addrs {
+#        type ipv4_addr
+#        flags interval
+#        elements = {
+#            192.168.0.0/24,
+#            10.0.0.0/8
+#        }
+#    }
+#    set output_allow_dest_6addrs {
+#        type ipv6_addr
+#        flags interval
+#        elements = {
+#        }
+#    }
+#    chain fw_output {
+#        type filter hook output priority filter
+#        policy drop
+#        ip daddr @output_allow_dest_addrs accept
+#        ip6 daddr @output_allow_dest_6addrs accept
+#        log prefix "[nftables] Dropped by firewall whitelist: " counter drop
+#    }
 }
 EONFT
 
