@@ -25,7 +25,7 @@ table inet firewall {
 
     # Define interval sets
 
-#    set input_allowed_source_addrs = {
+#    set input_allowed_source_addrs {
 #        type ipv4_addr
 #        flags interval
 #        elements = {
@@ -34,7 +34,7 @@ table inet firewall {
 #        }
 #    }
 #
-#    set input_allowed_source_6addrs = {
+#    set input_allowed_source_6addrs {
 #        type ipv6_addr
 #        flags interval
 #        elements = {
@@ -43,7 +43,7 @@ table inet firewall {
 #        }
 #    }
 #
-#    set input_allowed_destination_ports = {
+#    set input_allowed_destination_ports {
 #        type inet_service
 #        flags interval
 #        elements = {
