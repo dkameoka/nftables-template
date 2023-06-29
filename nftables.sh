@@ -139,8 +139,9 @@ table inet firewall {
 #    }
 }
 EONFT
-
 echo 'Wrote /etc/nftables.conf'
+
+chmod --changes 700 /etc/nftables.conf
 
 echo 'Make sure to disable, stop, and flush iptables; and enable and restart nftables'
 echo 'Confirm ruleset is active with: nft list ruleset'
