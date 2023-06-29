@@ -2,7 +2,6 @@
 
 set -o errexit -o noclobber -o nounset -o pipefail
 
-mkdir --parents --verbose /etc/nftables.conf
 rm --force --verbose /etc/nftables.conf
 cat << 'EONFT' > /etc/nftables.conf
 #!/usr/bin/env nft -f
