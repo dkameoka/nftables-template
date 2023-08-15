@@ -6,15 +6,15 @@ rm --force --verbose /etc/nftables.conf
 cat << 'EONFT' > /etc/nftables.conf
 #!/usr/bin/env nft -f
 
-╔═════════════════════════════════════════════════════╗
-║         Diagram of Netfilter Hook Locations         ║
-║        ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾        ║
-║                        Local Process                ║
-║                        ▲           ▼                ║
-║                    Input           Output           ║
-║                        ▲           ▼                ║
-║ Net─►Prerouting─►Routing─►Forward─►Postrouting─►Net ║
-╚═════════════════════════════════════════════════════╝
+#╔═════════════════════════════════════════════════════╗
+#║         Diagram of Netfilter Hook Locations         ║
+#║        ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾        ║
+#║                        Local Process                ║
+#║                        ▲           ▼                ║
+#║                    Input           Output           ║
+#║                        ▲           ▼                ║
+#║ Net─►Prerouting─►Routing─►Forward─►Postrouting─►Net ║
+#╚═════════════════════════════════════════════════════╝
 
 # Clear all rules.
 flush ruleset
